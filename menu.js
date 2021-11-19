@@ -32,7 +32,14 @@
 
 //CODE HERE
 
-
+let pizza = {
+    name: 'Pizza',
+    price: 10,
+    category: 'entree',
+    popularity: 10,
+    rating: 10,
+    tags: ['10 inch', 'cheese', 'contains gluten']
+}
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -44,6 +51,7 @@
 
 //CODE HERE
 
+console.log(pizza.popularity);
 
 /*
     Second, log the second tag in your pizza's
@@ -54,6 +62,7 @@
 
 //CODE HERE
 
+console.log(pizza.tags[1]);
 
 /*
     Third, destructure the price off of the
@@ -64,6 +73,9 @@
 
 //CODE HERE
 
+const { price } = pizza;
+
+console.log(price);
 
 /*
     Fourth, and last, destructure the category
@@ -74,6 +86,9 @@
 
 //CODE HERE
 
+const { category } = pizza;
+
+console.log(category);
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -89,7 +104,46 @@
 
 //CODE HERE
 
-
+let foodArr = [{
+    name: 'Pizza',
+    price: 10,
+    category: 'entree',
+    popularity: 10,
+    rating: 10,
+    tags: ['10 inch', 'cheese', 'contains gluten']
+},
+{
+    name: 'Pizza',
+    price: 12,
+    category: 'entree',
+    popularity: 2,
+    rating: 4,
+    tags: ['12 inch', 'cheese', 'gluten free']
+},
+{
+    name: 'Single Bread Stick',
+    price: 4,
+    category: 'side',
+    popularity: 6,
+    rating: 6,
+    tags: ['1 piece', 'tomato dip', 'garlic dip']
+},
+{
+    name: 'Pizza',
+    price: 20,
+    category: 'entree',
+    popularity: 9,
+    rating: 8,
+    tags: ['14 inch', 'pepperoni', 'contains gluten']
+},
+{
+    name: 'Five Bread Sticks',
+    price: 15,
+    category: 'side',
+    popularity: 7,
+    rating: 6,
+    tags: ['5 piece', 'tomato dip']
+}]
 
 //////////////////PROBLEM 4////////////////////
 /* 
@@ -105,9 +159,9 @@
 
 //CODE HERE
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filteredFood = foodArr.filter(order => order.tags.includes('tomato dip'));
 
-
+console.log(filteredFood);
 
 //////////////////PROBLEM 5////////////////////
 /* 
@@ -150,6 +204,26 @@
 
 //CODE HERE
 
+const filterByProperty = (property, number, type) => {
+    let filteredArray = [];
+    filteredArray = foodArr.filter(order => {
+        if (type === 'above') {
+            if (number < order[property]) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (number > order[property]) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
+    return filteredArray;
+}
 
 /*
     Invoke the `filterByProperty` function passing
@@ -159,3 +233,5 @@
 */
 
 //CODE HERE
+
+console.log(filterByProperty('price', 10, 'above'));
